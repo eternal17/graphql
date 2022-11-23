@@ -1,0 +1,21 @@
+body {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    background-color: #1D1D20;
+    font-family: 'Montserrat', sans-serif;
+}
+
+header {
+    color: #46C2FF;
+    display: flex;
+    justify-content: center;
+    font-size: 3rem;
+    width: 100%;
+    top: 4%;
+    position: absolute;
+}

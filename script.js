@@ -11,16 +11,24 @@ async function getApiData(graphqlQuery) {
   return response.json()
 }
 
-getApiData(`    query {
-    transaction (  where: {
-      _and: [{ type: { _eq: "xp" } }, { userId: { _eq: 171 } }]
-    }) {
-      userId
-      amount
-      type
-      createdAt
-    }
-  }`)
+getApiData(`query {
+  user (where: {id: {_eq: 171}}) {
+    login
+  }
+}`)
   .then((data) => {
-    console.log(data);
+    // username
+    console.log(data.data.user[0].login);
   })
+
+
+  // `    query {
+  //   transaction (  where: {
+  //     _and: [{ type: { _eq: "xp" } }, { userId: { _eq: 171 } }]
+  //   }) {
+  //     userId
+  //     amount
+  //     type
+  //     createdAt
+  //   }
+  // }`
