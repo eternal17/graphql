@@ -1,4 +1,4 @@
-
+let userInfoDiv = document.getElementById("user-info")
 
 async function getApiData(graphqlQuery) {
   const response = await fetch('https://learn.01founders.co/api/graphql-engine/v1/graphql', {
@@ -11,6 +11,8 @@ async function getApiData(graphqlQuery) {
   return response.json()
 }
 
+
+// for getting basic user details, username
 getApiData(`query {
   user (where: {id: {_eq: 171}}) {
     login
@@ -19,7 +21,12 @@ getApiData(`query {
   .then((data) => {
     // username
     console.log(data.data.user[0].login);
+    // userInfoDiv.innerHTML = data.data.user[0].login
   })
+
+
+
+
 
 
   // `    query {

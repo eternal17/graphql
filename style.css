@@ -52,3 +52,42 @@ header {
     height: 100%;
     width: 45%;
 }
+
+.section-header {
+    color: #46C2FF;
+    display: flex;
+    justify-content: center;
+    font-size: 1.3rem;
+}
+
+.graph {
+    font-size: 2.3rem;
+}
+
+.section-info {
+    position: relative;
+    /* border: 0.5px solid red; */
+    /* left: 2%; */
+    /* margin: 4%; */
+    display: flex;
+    justify-content: center;
+    width: 90%;
+    height: 80%;
+    margin: auto;
+    top: 2%;
+}
+
+.intro-span {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    font-weight: 300;
+    color: #d1d1d1;
+}
+
+.profile {
+    border-radius: 50%;
+    height: 42%;
+    top: 55%;
+    position: absolute;
+    left: 75%;
+}
