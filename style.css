@@ -34,6 +34,7 @@ header {
     border: 0.5px solid #46C2FF;
     height: 100%;
     width: 28%;
+    border-radius: 10px;
 }
 
 .two-graphs {
@@ -51,6 +52,7 @@ header {
     border: 0.5px solid #46C2FF;
     height: 100%;
     width: 45%;
+    border-radius: 10px;
 }
 
 .section-header {
