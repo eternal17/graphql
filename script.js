@@ -59,9 +59,12 @@ getApiData(`{
     }, 0)
 
     const xpConvertedToKB = Math.round(finalXpAmount)
+
+
     // display final xp amount
-
-
+    const displayXpDiv = document.querySelector(".xp-amount")
+    console.log(displayXpDiv);
+    displayXpDiv.innerHTML = xpConvertedToKB
   })
 
 

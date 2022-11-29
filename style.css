@@ -28,6 +28,7 @@ header {
     height: 30%;
     width: 100%;
     justify-content: space-around;
+    color: #d1d1d1;
 }
 
 .each-top-section {
@@ -92,4 +93,16 @@ header {
     top: 55%;
     position: absolute;
     left: 75%;
+}
+
+.xp-amount {
+    font-size: 7rem;
+    align-self: center;
+}
+
+.kb {
+    align-self: center;
+    font-size: 2rem;
+    position: relative;
+    top: 13%;
 }
