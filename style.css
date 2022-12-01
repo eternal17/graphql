@@ -25,7 +25,7 @@ header {
     top: 10%;
     display: flex;
     align-items: center;
-    height: 30%;
+    height: 24%;
     width: 100%;
     justify-content: space-around;
     color: #d1d1d1;
@@ -40,9 +40,9 @@ header {
 
 .two-graphs {
     position: absolute;
-    top: 42%;
+    top: 37%;
     width: 100%;
-    height: 56%;
+    height: 62%;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -54,6 +54,9 @@ header {
     height: 100%;
     width: 45%;
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .section-header {
@@ -63,7 +66,7 @@ header {
     font-size: 1.3rem;
 }
 
-.graph {
+.graph-title {
     font-size: 2.3rem;
 }
 
@@ -77,7 +80,7 @@ header {
     width: 90%;
     height: 80%;
     margin: auto;
-    top: 2%;
+    top: -8%;
 }
 
 .intro-span {
@@ -90,9 +93,9 @@ header {
 .profile {
     border-radius: 50%;
     height: 42%;
-    top: 55%;
+    top: 70%;
     position: absolute;
-    left: 75%;
+    left: 80%;
 }
 
 .xp-amount {
@@ -105,4 +108,51 @@ header {
     font-size: 2rem;
     position: relative;
     top: 13%;
+}
+
+svg {
+    /* border: 1px green solid; */
+    width: 70%;
+    height: 70%;
+}
+
+.pie-chart {
+    height: 300px;
+    width: 300px;
+}
+
+circle {
+    transition: stroke-dasharray .3s ease;
+}
+
+.scroll-projects {
+    display: flex;
+    /* border: 1px solid green; */
+    width: 85%;
+    margin-bottom: 1%;
+    color: #d1d1d1;
+    font-size: 1.3rem;
+    overflow-x: auto;
+    white-space: nowrap;
+    overflow-y: hidden;
+}
+
+.scroll-projects::-webkit-scrollbar {
+    background: #1D1D20;
+}
+
+.scroll-projects::-webkit-scrollbar-thumb {
+    background-color: #d1d1d1;
+    border-radius: 10px;
+}
+
+.each-project {
+    padding: 2%;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.pie-text {
+    font-size: 0.2rem;
+
 }

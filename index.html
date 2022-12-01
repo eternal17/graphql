@@ -38,10 +38,23 @@
     </div>
     <div class="two-graphs">
         <div class="each-graph">
-            <div class="section-header graph">Graph 1</div>
+            <div class="section-header graph-title">Xp % per project</div>
+            <div class="scroll-projects">
+            </div>
+            <svg viewBox="0 0 20 20" class="pie-chart">
+                <circle r="10" cx="10" cy="10" class="pie" fill="#d1d1d1" />
+                <circle r="5" cx="10" cy="10" class="pie-wedge" fill="transparent" stroke="green"
+                    stroke-dasharray="calc(0 * 31.42/100) 31.42" stroke-width="10"
+                    transform="rotate(-90) translate(-20)" />
+                <text class="pie-text" x="38%" y="55%"></text>
+                <text class="pie-project-name" x="20%" y="65%" style="font-size: 0.05rem;"></text>
+            </svg>
         </div>
         <div class="each-graph">
-            <div class="section-header graph">Graph 2</div>
+            <div class="section-header graph-title">Graph 2</div>
+            <svg class="chart">
+
+            </svg>
         </div>
     </div>
 </body>
