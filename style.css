@@ -152,6 +152,10 @@ circle {
     cursor: pointer;
 }
 
+.each-project:hover {
+    color: #3CB043;
+}
+
 .pie-text {
     font-size: 0.2rem;
 
