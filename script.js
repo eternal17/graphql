@@ -42,7 +42,6 @@ getApiData(`{
     // All of the transactions from the query above
     const allTransactions = data.data.user[0].transactions
 
-
     // add the username, id to the profile section 
     const username = data.data.user[0].login
     const userId = data.data.user[0].id
@@ -67,7 +66,6 @@ getApiData(`{
     }, {}));
 
 
-
     // get all the xp points added up to display final xp figure, in KB. Same as on intra.
     const finalXpAmount = uniqueTransactions.reduce((acc, obj) => {
       return acc + obj.amount / 1000
@@ -84,7 +82,6 @@ getApiData(`{
 
 // xp points from projects only (not including piscine and exercise xp)
 const xpFromProjects = []
-
 
 
 // for xp points of only projects (no piscine or excercises). Query used for the pie chart
@@ -171,8 +168,6 @@ getApiData(`{
 }`).then((data) => {
   const projectStartAndEndDates = data.data.user[0].progresses
 
-
-
   const daysBetweenEachProject = []
 
   // calculate days between each project and push into array
@@ -186,10 +181,6 @@ getApiData(`{
     objToPush["grade"] = (proj.grade).toFixed(2)
     daysBetweenEachProject.push(objToPush)
   })
-
-  // sort projects by least days to most. 
-
-
 
 
   // bar width for 1 day
@@ -222,7 +213,6 @@ getApiData(`{
     barChart.appendChild(bar)
   })
 })
-
 
 // populates the grade section with project names and grades
 function populateGrades(obj) {
