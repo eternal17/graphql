@@ -65,3 +65,21 @@
     }
   }
 }
+
+
+// QUERY: get all of the created at submitted dates for the projects as well as the grades for each project 
+
+{
+  user(where: {login: {_eq: "eternal17"}}) {
+    progresses(
+      where: {_and: [{object: {type: {_eq: "project"}}}, {isDone: {_eq: true}}]}
+    order_by: {createdAt: desc}) {
+      object {
+        name
+      }
+      createdAt
+      updatedAt
+      grade
+    }
+  }
+}

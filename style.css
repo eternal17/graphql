@@ -96,6 +96,7 @@ header {
     top: 70%;
     position: absolute;
     left: 80%;
+    z-index: -1;
 }
 
 .xp-amount {
@@ -127,7 +128,6 @@ circle {
 
 .scroll-projects {
     display: flex;
-    /* border: 1px solid green; */
     width: 85%;
     margin-bottom: 1%;
     color: #d1d1d1;
@@ -137,11 +137,11 @@ circle {
     overflow-y: hidden;
 }
 
-.scroll-projects::-webkit-scrollbar {
+*::-webkit-scrollbar {
     background: #1D1D20;
 }
 
-.scroll-projects::-webkit-scrollbar-thumb {
+*::-webkit-scrollbar-thumb {
     background-color: #d1d1d1;
     border-radius: 10px;
 }
@@ -155,4 +155,48 @@ circle {
 .pie-text {
     font-size: 0.2rem;
 
+}
+
+.bar-chart {
+    width: 100%;
+    height: 210%;
+}
+
+.bar-container {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 70%;
+    width: 90%;
+    margin-top: 5%;
+}
+
+rect {
+    fill: #3CB043;
+    height: 20px;
+}
+
+.bar-chart-text {
+    fill: #d1d1d1;
+}
+
+#grade-section {
+    display: block;
+    flex-direction: column;
+    overflow-y: auto;
+    margin-top: 3%;
+
+}
+
+.each-proj-grade {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 2%;
+}
+
+#grade-section::-webkit-scrollbar {
+    width: 0.5em;
+}
+
+.grade {
+    padding-right: 3%;
 }

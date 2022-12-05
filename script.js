@@ -2,6 +2,9 @@ const scrollableProjects = document.querySelector(".scroll-projects")
 const pieWedge = document.querySelector(".pie-wedge")
 const pieTextPercent = document.querySelector(".pie-text")
 const pieProjectName = document.querySelector(".pie-project-name")
+const introSpan = document.querySelector(".intro-span")
+const barChart = document.querySelector(".bar-chart")
+const gradeSection = document.querySelector("#grade-section")
 async function getApiData(graphqlQuery) {
   const response = await fetch('https://learn.01founders.co/api/graphql-engine/v1/graphql', {
     method: "POST",
@@ -39,6 +42,15 @@ getApiData(`{
     // All of the transactions from the query above
     const allTransactions = data.data.user[0].transactions
 
+
+    // add the username, id to the profile section 
+    const username = data.data.user[0].login
+    const userId = data.data.user[0].id
+    const introParagragh = document.createElement("p")
+    introParagragh.innerHTML = `Hello. My name is Sarmad Khatri AKA ${username}(${userId}). Check out some of stats during my
+    time at 01Founders.`
+    introSpan.appendChild(introParagragh)
+
     // creating new array and adding only project name and xp
     allTransactions.forEach(obj => {
       const objToPush = {}
@@ -73,13 +85,14 @@ getApiData(`{
 // xp points from projects only (not including piscine and exercise xp)
 const xpFromProjects = []
 
-// for xp points of only projects (no piscine or excercises)
 
+
+// for xp points of only projects (no piscine or excercises). Query used for the pie chart
 getApiData(`{
   user(where:  {login: {_eq: "eternal17"}}) {
     transactions(
       where: {_and: [{amount: {_gt: 4999}}, {type: {_eq: "xp"}}, {object: {type: {_eq: "project"}}}]}
-      order_by: {createdAt: desc}
+      order_by: {createdAt: asc}
     ) {
       amount
       type
@@ -140,11 +153,87 @@ getApiData(`{
 
 })
 
-// console.log(xpFromProjects, "xp from projects");
-// const idOne = document.querySelector("#one")
-// let pieWedge = document.querySelector(".pie-wedge")
-// idOne.onclick = () => {
-//   pieWedge.style.strokeDasharray = "calc(50 * 31.42/100) 31.42"
-// }
+// query for bar chart data - getting the days between project start and end 
 
-// get only projects and find out percentages of each project compared to overall xpAmount
+getApiData(`{
+  user(where: {login: {_eq: "eternal17"}}) {
+    progresses(
+      where: {_and: [{object: {type: {_eq: "project"}}}, {isDone: {_eq: true}}]}
+    order_by: {createdAt: desc}) {
+      object {
+        name
+      }
+      createdAt
+      updatedAt
+      grade
+    }
+  }
+}`).then((data) => {
+  const projectStartAndEndDates = data.data.user[0].progresses
+  console.log(projectStartAndEndDates);
+
+
+  const daysBetweenEachProject = []
+
+  // calculate days between each project and push into array
+  projectStartAndEndDates.forEach((proj) => {
+    // get the difference between create and update in days
+    const projectStartDate = new Date(proj.createdAt)
+    const projectEndDate = new Date(proj.updatedAt)
+    const objToPush = {}
+    objToPush["project"] = proj.object.name
+    objToPush["days"] = Math.ceil((projectEndDate - projectStartDate) / (1000 * 3600 * 24))
+    objToPush["grade"] = (proj.grade).toFixed(2)
+    daysBetweenEachProject.push(objToPush)
+  })
+
+  // sort projects by least days to most. 
+
+
+
+
+  // bar width for 1 day
+  const baseBarWidth = 5
+
+  // positioning each bar
+  let rectY = 0
+
+  // positioning text for each bar
+  let textY = 13
+
+  // populate the svg with bars and text from queried data.
+  daysBetweenEachProject.forEach((proj) => {
+    populateGrades(proj)
+    const nameSpace = "http://www.w3.org/2000/svg"
+    const bar = document.createElementNS(nameSpace, "g")
+    bar.classList.add("bar")
+    let rect = document.createElementNS(nameSpace, "rect")
+    rect.setAttribute("width", `${proj.days * baseBarWidth}`)
+    rect.setAttribute("y", `${rectY}`)
+    rectY += 30
+    bar.appendChild(rect)
+    const text = document.createElementNS(nameSpace, "text")
+    text.classList.add("bar-chart-text")
+    text.setAttribute("y", `${textY}`)
+    text.setAttribute("x", `2`)
+    textY += 30
+    text.innerHTML = `${proj.project} - ${proj.days} days`
+    bar.appendChild(text)
+    barChart.appendChild(bar)
+  })
+})
+
+
+// populates the grade section with project names and grades
+function populateGrades(obj) {
+  const eachProjGradeDiv = document.createElement("div")
+  eachProjGradeDiv.classList.add("each-proj-grade")
+  const projectName = document.createElement("div")
+  projectName.innerHTML = obj.project
+  const grade = document.createElement("div")
+  grade.classList.add("grade")
+  grade.innerHTML = obj.grade
+  eachProjGradeDiv.appendChild(projectName)
+  eachProjGradeDiv.appendChild(grade)
+  gradeSection.appendChild(eachProjGradeDiv)
+}
