@@ -73,7 +73,7 @@
   user(where: {login: {_eq: "eternal17"}}) {
     progresses(
       where: {_and: [{object: {type: {_eq: "project"}}}, {isDone: {_eq: true}}]}
-    order_by: {createdAt: desc}) {
+    order_by: {createdAt: asc}) {
       object {
         name
       }

@@ -47,7 +47,7 @@ getApiData(`{
     const username = data.data.user[0].login
     const userId = data.data.user[0].id
     const introParagragh = document.createElement("p")
-    introParagragh.innerHTML = `Hello. My name is Sarmad Khatri AKA ${username}(${userId}). Check out some of stats during my
+    introParagragh.innerHTML = `Hello. My name is Sarmad Khatri AKA <span style="color: #3CB043">${username}(${userId})</span>. Check out some of stats during my
     time at 01Founders.`
     introSpan.appendChild(introParagragh)
 
@@ -78,7 +78,7 @@ getApiData(`{
 
     // display final xp amount
     const displayXpDiv = document.querySelector(".xp-amount")
-    console.log(displayXpDiv);
+
     displayXpDiv.innerHTML = xpConvertedToKB
   })
 
@@ -106,7 +106,7 @@ getApiData(`{
 }`).then((data) => {
 
   const projectTransactions = data.data.user[0].transactions
-  console.log(projectTransactions)
+
 
   // put into object and take out all the duplicates
   projectTransactions.forEach((transaction) => {
@@ -128,7 +128,7 @@ getApiData(`{
     return acc + obj.amount
   }, 0)
 
-  console.log(finalXpAmount, "xp without pis");
+
 
   // find out percentage of each project, add to uniquetransactions object
   uniqueTransactions.forEach((transaction) => {
@@ -170,7 +170,7 @@ getApiData(`{
   }
 }`).then((data) => {
   const projectStartAndEndDates = data.data.user[0].progresses
-  console.log(projectStartAndEndDates);
+
 
 
   const daysBetweenEachProject = []

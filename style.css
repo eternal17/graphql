@@ -177,13 +177,20 @@ rect {
 
 .bar-chart-text {
     fill: #d1d1d1;
+    cursor: pointer;
+    transition: letter-spacing .3s ease;
+
+}
+
+.bar-chart-text:hover {
+    letter-spacing: 0.2rem;
 }
 
 #grade-section {
     display: block;
     flex-direction: column;
     overflow-y: auto;
-    margin-top: 3%;
+    margin-top: 5%;
 
 }
 
@@ -199,4 +206,5 @@ rect {
 
 .grade {
     padding-right: 3%;
+    color: #3CB043;
 }
